@@ -2347,7 +2347,16 @@ function getUserMedia(constraints) {
 	//  	}
 	//  }
 	// });
-
+	if (constraints.video.optional && Array.isArray(constraints.video.optional)) {
+		for (var i = 0; i < constraints.video.optional.length; i++) {
+			var keys = Object.keys(constraints.video.optional[i]);
+			for (var j = 0; j < keys.length; j++) {
+				var key = keys[j];
+				constraints.video[key] = constraints.video.optional[i][key];
+			}
+			
+		}
+	}
 	// Get video constraints
 	if (videoRequested) {
 		// Get requested video deviceId.
