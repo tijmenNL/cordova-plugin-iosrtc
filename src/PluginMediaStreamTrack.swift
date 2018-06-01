@@ -14,7 +14,7 @@ class PluginMediaStreamTrack : NSObject, RTCMediaStreamTrackDelegate {
 		NSLog("PluginMediaStreamTrack#init()")
 
 		self.rtcMediaStreamTrack = rtcMediaStreamTrack
-		self.id = rtcMediaStreamTrack.label  // NOTE: No "id" property provided.
+		self.id = rtcMediaStreamTrack.label + "-" + UUID().uuidString // NOTE: No "id" property provided.
 		self.kind = rtcMediaStreamTrack.kind
 	}
 
